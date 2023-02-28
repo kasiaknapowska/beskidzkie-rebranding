@@ -13,23 +13,26 @@ import {
   Typography,
   TextField,
   FormLabel,
-  InputAdornment
+  InputAdornment,
 } from "@mui/material";
 
 import { products } from "../../data/data";
 
-const soldType = ["sztuki", "kartony", "palety"]
+const soldType = ["sztuki", "kartony", "palety"];
 
 const Form = () => {
-  const { control, handleSubmit, watch } = useForm({
+  const { control, handleSubmit, watch, reset } = useForm({
     defaultValues: {
       product: "",
       pack: "standardowy",
+      soldType: "",
+      soldQuantity: "",
     },
   });
   const onSubmit = (data) => {
     console.log(data);
     console.log(...products.filter((product) => product.id === data.product));
+    // reset()
   };
 
   //   const productSelected = watch("product");
@@ -49,11 +52,11 @@ const Form = () => {
           }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
             <FormControl fullWidth>
-              <InputLabel id="produkt">Wybierz produkt</InputLabel>
+              <InputLabel id="product">Wybierz produkt</InputLabel>
               <Select
                 //   {...field}
-                labelId="produkt"
-                id="produkt"
+                labelId="product"
+                id="product"
                 label="Wybierz produkt"
                 onChange={onChange}
                 value={value}
@@ -63,6 +66,7 @@ const Form = () => {
                     {product.id}
                   </MenuItem>
                 ))}
+                
               </Select>{" "}
             </FormControl>
           )}
@@ -87,6 +91,7 @@ const Form = () => {
                     row
                     value={value}
                     onChange={onChange}
+                  
                   >
                     {productPackage.map((el) => (
                       <FormControlLabel
@@ -96,19 +101,42 @@ const Form = () => {
                         label={"karton " + el}
                       />
                     ))}
+                    
                   </RadioGroup>
+                 
                 </FormControl>
               )}
             />
-          <Typography>Sprzedany wolumen</Typography>
-          <TextField
-          label="Podaj ilość"
-          id="quantity"
-        //   InputProps={{
-        //     endAdornment: <InputAdornment position="end">sztuk</InputAdornment>,
-        //   }}
-        />
-          <Controller
+            <Typography>Sprzedany wolumen</Typography>
+            <Controller
+              name="soldQuantity"
+              control={control}
+              rules={{
+                required: true,
+                pattern: {
+                  value: /^(?=.+)(?:[1-9]\d*|0)?(?:\.\d+)?$/,
+                  message:
+                    "Podaj prawidłową liczbę całkowitą lub ułamek dziesiętny w formacie z ' . ', np. 0.5",
+                },
+              }}
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <TextField
+                  label="Podaj ilość"
+                  id="quantity"
+                  onChange={onChange}
+                  value={value}
+                  helperText={error ? error.message : null}
+                  error={!!error}
+                  //   InputProps={{
+                  //     endAdornment: <InputAdornment position="end">sztuk</InputAdornment>,
+                  //   }}
+                />
+              )}
+            />
+            <Controller
               name="soldType"
               control={control}
               rules={{
@@ -136,11 +164,11 @@ const Form = () => {
                       />
                     ))}
                   </RadioGroup>
+                  {!!error ? <Typography className="error" sx={{fontSize: "12px", marginLeft: "14px"}}>Wybierz jedną z powyższych opcji</Typography> : null}
                 </FormControl>
               )}
             />
-       
-         
+
             <Button type="submit" variant="contained" size="large">
               Przelicz
             </Button>
