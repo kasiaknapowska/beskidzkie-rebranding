@@ -10,21 +10,26 @@ import {
   FormControlLabel,
   RadioGroup,
   Radio,
+  Typography,
+  TextField,
   FormLabel,
+  InputAdornment
 } from "@mui/material";
 
 import { products } from "../../data/data";
+
+const soldType = ["sztuki", "kartony", "palety"]
 
 const Form = () => {
   const { control, handleSubmit, watch } = useForm({
     defaultValues: {
       product: "",
-      karton: "standardowy",
+      pack: "standardowy",
     },
   });
   const onSubmit = (data) => {
     console.log(data);
-    console.log(products.filter((product) => product.id === data.product));
+    console.log(...products.filter((product) => product.id === data.product));
   };
 
   //   const productSelected = watch("product");
@@ -32,9 +37,6 @@ const Form = () => {
     (product) => product.id === watch("product")
   );
   const productPackage = productSelected[0]?.pack;
-  // function validateSelect(v) {
-  //     if (v) return "";
-  // }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -44,9 +46,6 @@ const Form = () => {
           control={control}
           rules={{
             required: true,
-            // validate: {
-            //     check: v => v ? "" : "Wybierz coś"
-            // }
           }}
           render={({ field: { onChange, value }, fieldState: { error } }) => (
             <FormControl fullWidth>
@@ -71,7 +70,7 @@ const Form = () => {
         {productSelected && productPackage && (
           <>
             <Controller
-              name="karton"
+              name="pack"
               control={control}
               rules={{
                 required: true,
@@ -83,8 +82,8 @@ const Form = () => {
                 <FormControl>
                   {/* <FormLabel id="karton">Wybierz karton</FormLabel> */}
                   <RadioGroup
-                    aria-labelledby="karton"
-                    name="karton"
+                    aria-labelledby="pack"
+                    name="pack"
                     row
                     value={value}
                     onChange={onChange}
@@ -97,13 +96,51 @@ const Form = () => {
                         label={"karton " + el}
                       />
                     ))}
-                    {/* <FormControlLabel value={value} control={<Radio />} label="Female" />
-                  <FormControlLabel value="male" control={<Radio />} label="Male" />
-                  <FormControlLabel value="other" control={<Radio />} label="Other" /> */}
                   </RadioGroup>
                 </FormControl>
               )}
             />
+          <Typography>Sprzedany wolumen</Typography>
+          <TextField
+          label="Podaj ilość"
+          id="quantity"
+        //   InputProps={{
+        //     endAdornment: <InputAdornment position="end">sztuk</InputAdornment>,
+        //   }}
+        />
+          <Controller
+              name="soldType"
+              control={control}
+              rules={{
+                required: true,
+              }}
+              render={({
+                field: { onChange, value },
+                fieldState: { error },
+              }) => (
+                <FormControl>
+                  {/* <FormLabel id="soldType">Wybierz rodzaj opakowania</FormLabel> */}
+                  <RadioGroup
+                    aria-labelledby="soldType"
+                    name="soldType"
+                    row
+                    value={value}
+                    onChange={onChange}
+                  >
+                    {soldType.map((el) => (
+                      <FormControlLabel
+                        key={el}
+                        value={el}
+                        control={<Radio />}
+                        label={el}
+                      />
+                    ))}
+                  </RadioGroup>
+                </FormControl>
+              )}
+            />
+       
+         
             <Button type="submit" variant="contained" size="large">
               Przelicz
             </Button>
