@@ -1,8 +1,7 @@
-// import logo from "./logo.svg";
-import logo from "./images/BeskidzkieLogo.png";
-import "./App.css";
 import { ThemeProvider } from '@mui/material/styles';
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
+import "./App.css";
+import logo from "./images/BeskidzkieLogo.png";
 import Form from "./components/Form/Form";
 import {theme} from "./theme/theme"
 

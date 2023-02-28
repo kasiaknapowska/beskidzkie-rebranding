@@ -1,32 +1,19 @@
 import React from "react";
-import { useForm, Controller } from "react-hook-form";
-import {
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Button,
-  Stack,
-  FormControlLabel,
-  RadioGroup,
-  Radio,
-  Typography,
-  TextField,
-  FormLabel,
-  InputAdornment,
-} from "@mui/material";
+import { useForm } from "react-hook-form";
+import { Button, Stack, Typography, Divider } from "@mui/material";
+import CustomRadioGroup from "../CustomRadioGroup/CustomRadioGroup";
+import CustomInput from "../CustomInput/CustomInput";
+import CustomSelect from "../CustomSelect/CustomSelect";
 
-import { products } from "../../data/data";
-
-const soldType = ["sztuki", "kartony", "palety"];
+import { products, typeSold } from "../../data/data";
 
 const Form = () => {
   const { control, handleSubmit, watch, reset } = useForm({
     defaultValues: {
       product: "",
       pack: "standardowy",
-      soldType: "",
-      soldQuantity: "",
+      typeSold: "",
+      quantitySold: "",
     },
   });
   const onSubmit = (data) => {
@@ -35,140 +22,49 @@ const Form = () => {
     // reset()
   };
 
-  //   const productSelected = watch("product");
   const productSelected = products.filter(
     (product) => product.id === watch("product")
   );
   const productPackage = productSelected[0]?.pack;
-
+  const packChosen = watch("pack")
+  const productsFilteredByPackage = products.filter(
+    (product) => product.pack.includes(packChosen) 
+  );
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={4}>
-        <Controller
-          name="product"
+        <Typography variant="subtitle1">Kalkulator Rebranding</Typography>
+        <CustomSelect
+          data={productsFilteredByPackage}
           control={control}
-          rules={{
-            required: true,
-          }}
-          render={({ field: { onChange, value }, fieldState: { error } }) => (
-            <FormControl fullWidth>
-              <InputLabel id="product">Wybierz produkt</InputLabel>
-              <Select
-                //   {...field}
-                labelId="product"
-                id="product"
-                label="Wybierz produkt"
-                onChange={onChange}
-                value={value}
-              >
-                {products.map((product) => (
-                  <MenuItem key={product.id} value={product.id}>
-                    {product.id}
-                  </MenuItem>
-                ))}
-                
-              </Select>{" "}
-            </FormControl>
-          )}
+          name="product"
+          label="Wybierz produkt"
         />
         {productSelected && productPackage && (
           <>
-            <Controller
+            <CustomRadioGroup
               name="pack"
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <FormControl>
-                  {/* <FormLabel id="karton">Wybierz karton</FormLabel> */}
-                  <RadioGroup
-                    aria-labelledby="pack"
-                    name="pack"
-                    row
-                    value={value}
-                    onChange={onChange}
-                  
-                  >
-                    {productPackage.map((el) => (
-                      <FormControlLabel
-                        key={el}
-                        value={el}
-                        control={<Radio />}
-                        label={"karton " + el}
-                      />
-                    ))}
-                    
-                  </RadioGroup>
-                 
-                </FormControl>
-              )}
+              data={productPackage}
             />
-            <Typography>Sprzedany wolumen</Typography>
-            <Controller
-              name="soldQuantity"
+            <Divider />
+            <Typography variant="subtitle1">Sprzedany wolumen</Typography>
+            <CustomInput
+              name="quantitySold"
               control={control}
-              rules={{
-                required: true,
-                pattern: {
-                  value: /^(?=.+)(?:[1-9]\d*|0)?(?:\.\d+)?$/,
-                  message:
-                    "Podaj prawidłową liczbę całkowitą lub ułamek dziesiętny w formacie z ' . ', np. 0.5",
-                },
+              label="Podaj ilość"
+              pattern={{
+                value: /^(?=.+)(?:[1-9]\d*|0)?(?:\.\d+)?$/,
+                message:
+                  "Podaj prawidłową liczbę całkowitą lub ułamek dziesiętny w formacie z ' . ', np. 0.5",
               }}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <TextField
-                  label="Podaj ilość"
-                  id="quantity"
-                  onChange={onChange}
-                  value={value}
-                  helperText={error ? error.message : null}
-                  error={!!error}
-                  //   InputProps={{
-                  //     endAdornment: <InputAdornment position="end">sztuk</InputAdornment>,
-                  //   }}
-                />
-              )}
             />
-            <Controller
-              name="soldType"
+            <CustomRadioGroup
+              name="typeSold"
               control={control}
-              rules={{
-                required: true,
-              }}
-              render={({
-                field: { onChange, value },
-                fieldState: { error },
-              }) => (
-                <FormControl>
-                  {/* <FormLabel id="soldType">Wybierz rodzaj opakowania</FormLabel> */}
-                  <RadioGroup
-                    aria-labelledby="soldType"
-                    name="soldType"
-                    row
-                    value={value}
-                    onChange={onChange}
-                  >
-                    {soldType.map((el) => (
-                      <FormControlLabel
-                        key={el}
-                        value={el}
-                        control={<Radio />}
-                        label={el}
-                      />
-                    ))}
-                  </RadioGroup>
-                  {!!error ? <Typography className="error" sx={{fontSize: "12px", marginLeft: "14px"}}>Wybierz jedną z powyższych opcji</Typography> : null}
-                </FormControl>
-              )}
+              data={typeSold}
             />
-
             <Button type="submit" variant="contained" size="large">
               Przelicz
             </Button>

@@ -12,4 +12,15 @@ export const theme = createTheme({
     status: {
       danger: '#d32f2f',
     },
+    typography: {
+        h1: {
+            fontSize: 28,
+            fontWeight: 600,
+            textTransform: 'uppercase',
+        },
+        subtitle1: {
+            fontSize: 16,
+            textTransform: 'uppercase',
+        }
+    }
   });

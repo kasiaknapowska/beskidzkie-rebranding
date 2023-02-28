@@ -1,3 +1,5 @@
+export const typeSold = ["sztuki", "kartony", "palety"];
+
 export const products = [
   {
     id: "Beskidzkie Paluszki z solą",
