@@ -1,6 +1,7 @@
 export const products = [
   {
     id: "Beskidzkie Paluszki z solą",
+    pack: ["standardowy", "sieciowy"],
     old: {
       masa: 0.3,
       standard: {
@@ -26,6 +27,7 @@ export const products = [
   },
   {
     id: "Beskidzkie Paluszki ser-cebula",
+    pack: ["standardowy", "sieciowy"],
     old: {
       masa: 0.22,
       standard: {
@@ -51,6 +53,7 @@ export const products = [
   },
   {
     id: "Beskidzkie Paluszki bekonowe",
+    pack: ["standardowy", "sieciowy"],
     old: {
       masa: 0.22,
       standard: {
@@ -76,6 +79,7 @@ export const products = [
   },
   {
     id: "Beskidzkie Paluszki ser-pomidor",
+    pack: ["standardowy"],
     old: {
       masa: 0.21,
       standard: {
@@ -95,6 +99,7 @@ export const products = [
   },
   {
     id: "Beskidzkie Paluszki delikatesowe",
+    pack: ["standardowy", "sieciowy"],
     old: {
       masa: 0.25,
       standard: {
@@ -120,6 +125,7 @@ export const products = [
   },
   {
     id: "Beskidzkie Tuba Mix",
+    pack: ["standardowy"],
     old: {
       masa: 0.3,
       standard: {
@@ -139,6 +145,7 @@ export const products = [
   },
   {
     id: "Beskidzkie Precelki z solą",
+    pack: ["standardowy"],
     old: {
       masa: 0.07,
       standard: {
@@ -158,6 +165,7 @@ export const products = [
   },
   {
     id: "Beskidzkie Prażynki z solą",
+    pack: ["standardowy"],
     old: {
       masa: 0.12,
       standard: {
@@ -177,6 +185,7 @@ export const products = [
   },
   {
     id: "Beskidzkie Prażynki bekonowe",
+    pack: ["standardowy"],
     old: {
       masa: 0.12,
       standard: {
