@@ -10,7 +10,6 @@ export const getObjectValueByKey = (myObject, myKey) =>
       Object.entries(myObject).filter(([key, value]) => key === myKey)
     )
   );
-// const selectType = (product, defaultType) => product[0]?.type || defaultType
 
 export const calcWolumenWeight = (productWeight, quantity, packQuantity = 1) =>
   productWeight * quantity * packQuantity;
@@ -23,6 +22,21 @@ export const getProductWeight = (product) => {
 
 export const fixNumber = (n) => n.toFixed(2);
 
+export const ceilNumber = (n) => Math.ceil(n * 100) / 100;
+
 export const createTableData = (pack, before, after) => {
   return { pack, before, after };
+};
+
+export const calcQuantity = (
+  wolumen,
+  weightBefore,
+  weightAfter,
+  packsBefore = 1,
+  packsAfter = 1
+) => {
+  const before = ceilNumber(wolumen / weightBefore / packsBefore);
+  const after = ceilNumber(wolumen / weightAfter / packsAfter);
+
+  return { before, after };
 };

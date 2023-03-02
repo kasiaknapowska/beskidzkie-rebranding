@@ -9,10 +9,7 @@ import CustomRadioGroup from "../CustomRadioGroup/CustomRadioGroup";
 import CustomInput from "../CustomInput/CustomInput";
 import CustomSelect from "../CustomSelect/CustomSelect";
 
-import {
-  filterById,
-  filterByType,
-} from "../../utils/functions";
+import { filterById, filterByType } from "../../utils/functions";
 import { products, defaultType, pack } from "../../data/data";
 
 const Form = () => {
@@ -28,15 +25,12 @@ const Form = () => {
 
   const onSubmit = (data) => {
     dispatch(setSelected(data));
-    // dispatch(setProductData(filterById(products, data.id)))
-    // reset()
   };
 
   const productsFilteredById = filterById(products, watch("id"));
   const productType = productsFilteredById[0]?.type || defaultType;
   const productsFilteredByType = filterByType(products, watch("type"));
 
-  console.log("form")
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={6}>
@@ -70,8 +64,12 @@ const Form = () => {
               />
               <CustomRadioGroup name="pack" control={control} data={pack} />
             </Stack>
+
             <Button type="submit" variant="contained" size="large">
               Przelicz
+            </Button>
+            <Button variant="outlined" onClick={() => reset()}>
+              Reset
             </Button>
           </>
         )}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Stack, Typography } from "@mui/material";
+import { Chip, Stack, Typography } from "@mui/material";
 import TrendingFlatOutlinedIcon from "@mui/icons-material/TrendingFlatOutlined";
 import { getProductWeight } from "../../utils/functions";
 
@@ -12,17 +12,17 @@ const ProductDetails = () => {
   const productWeight = getProductWeight(...product);
 
   return (
-    <Stack spacing={1}>
+    <Stack spacing={2}>
       <Typography variant="subtitle1">{id}</Typography>
       <Typography variant="subtitle2">
         {productWeight.before} g
         <TrendingFlatOutlinedIcon sx={{ margin: "0 16px" }} />{" "}
         {productWeight.after} g
       </Typography>
-      <Stack direction="row" spacing={3}>
-        <Typography>Typ: {type}</Typography>
-        <Typography>Ilość: {quantity} </Typography>
-        <Typography>Opakowanie: {pack} </Typography>
+      <Stack direction={{ xs: "column", sm: "row" }} spacing={{ xs: 1, sm: 4 }}>
+        <Typography variant="small">Typ: {type}</Typography>
+        <Typography variant="small">Ilość: {quantity} </Typography>
+        <Typography variant="small">Opakowanie: {pack} </Typography>
       </Stack>
     </Stack>
   );

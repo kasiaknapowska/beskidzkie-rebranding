@@ -16,10 +16,6 @@ const useWolumenCalculator = () => {
         getObjectValueByKey(old, type)[0],
         pack
       );
-      // console.log(productToCount);
-      console.log(product[0]);
-      // console.log(packQuantity);
-      console.log(getObjectValueByKey(old, type))
 
       const packQ = packQuantity.length === 1 ? packQuantity[0] : 1;
       const weight = calcWolumenWeight(old.masa, Number(quantity), packQ);

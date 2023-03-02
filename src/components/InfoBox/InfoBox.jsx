@@ -10,14 +10,13 @@ const InfoBox = ({title, text}) => {
         padding: "14px",
         fontSize: '14px',
         color: "white",
-        textTransform: "uppercase",
         borderRadius: "4px",
         backgroundColor: "secondary.dark",
         display: "flex",
         justifyContent: "space-between",
       }}
     >
-      <Typography>{title} </Typography>
+      <Typography sx={{textTransform: "uppercase"}}>{title} </Typography>
       <Typography>{text} kg</Typography>
     </Box>
   );

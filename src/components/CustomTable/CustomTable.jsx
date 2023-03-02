@@ -1,45 +1,54 @@
-import React from 'react'
-import { createTableData } from '../../utils/functions';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-  
+import React from "react";
+import { createTableData } from "../../utils/functions";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+
+const CustomTable = ({ header, content }) => {
+  const { piece, carton, pallet } = content;
   const rows = [
-    createTableData('Ilość sztuk', 1, 1),
-    createTableData('Ilość kartonów', 1, 1),
-    createTableData('Ilość palet', 1, 1),
+    createTableData("Ilość sztuk", piece.before, piece.after),
+    createTableData("Ilość kartonów", carton.before, carton.after),
+    createTableData("Ilość palet", pallet.before, pallet.after),
   ];
 
-const CustomTable = ({header, trows}) => {
   return (
     <TableContainer component={Paper} variant="outlined">
-    <Table aria-label="table">
-      <TableHead>
-        <TableRow>
-          {header.map(el => <TableCell key={el} align="right" sx={{textTransform: "uppercase"}}>{el}</TableCell>)}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {rows.map((row) => (
-          <TableRow
-            key={row.pack}
-            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-          >
-            <TableCell component="th" scope="row">
-              {row.pack}
-            </TableCell>
-            <TableCell align="right">{row.before}</TableCell>
-            <TableCell align="right">{row.after}</TableCell>
+      <Table aria-label="table">
+        <TableHead>
+          <TableRow>
+            {header.map((el) => (
+              <TableCell
+                key={el}
+                align="right"
+                sx={{ textTransform: "uppercase" }}
+              >
+                {el}
+              </TableCell>
+            ))}
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-  )
-}
+        </TableHead>
+        <TableBody>
+          {rows.map((row) => (
+            <TableRow
+              key={row.pack}
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {row.pack}
+              </TableCell>
+              <TableCell align="right">{row.before}</TableCell>
+              <TableCell align="right">{row.after}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+};
 
-export default CustomTable
+export default CustomTable;

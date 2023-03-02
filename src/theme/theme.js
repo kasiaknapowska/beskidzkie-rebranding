@@ -15,18 +15,25 @@ export const theme = createTheme({
     typography: {
         h1: {
             fontSize: 28,
+            fontFamily: "Roboto, sans-serif",
             fontWeight: 600,
             textTransform: 'uppercase',
         },
         subtitle1: {
           fontSize: 18,
+          fontFamily: "Roboto, sans-serif",
           fontWeight: 600,
           textTransform: 'uppercase',
       },
       subtitle2: {
         fontSize: 18,
+        fontFamily: "Roboto, sans-serif",
         fontWeight: 600,
     },
+    small: {
+      fontSize: 14,
+      fontFamily: "Roboto, sans-serif",
+    }
     },
     components: {
         MuiButton: {
@@ -38,4 +45,5 @@ export const theme = createTheme({
           },
         },
       },
+     
   });
