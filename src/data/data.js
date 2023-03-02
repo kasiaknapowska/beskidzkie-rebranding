@@ -1,5 +1,5 @@
 export const defaultType = ["standardowy", "sieciowy"];
-export const pack = ["sztuki", "kartony", "palety"];
+export const pack = ["sztuka", "karton", "paleta"];
 
 export const products = [
   {

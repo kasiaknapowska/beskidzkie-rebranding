@@ -1,11 +1,19 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+
+import { setProductToCount } from "../../redux/productSlice";
+
 import { Button, Stack, Typography, Divider } from "@mui/material";
 import CustomRadioGroup from "../CustomRadioGroup/CustomRadioGroup";
 import CustomInput from "../CustomInput/CustomInput";
 import CustomSelect from "../CustomSelect/CustomSelect";
 
-import { selectProduct, filterByType } from "../../utils/functions";
+import {
+  selectProduct,
+  filterByType,
+  getObjectValueByKey,
+} from "../../utils/functions";
 import { products, defaultType, pack } from "../../data/data";
 
 const Form = () => {
@@ -17,20 +25,27 @@ const Form = () => {
       quantity: "",
     },
   });
+  const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
-    console.log(...products.filter((product) => product.id === data.id));
+    // console.log(data);
+    // console.log(...selectProduct(products, data.id));
+    dispatch(setProductToCount(data));
+
+    const productS = selectProduct(products, data.id);
+    // console.log(productS)
+    console.log(productS[0].old);
+    const filtered = getObjectValueByKey(productS[0].old, data.type);
+    console.log(filtered[0]);
+    const quantityInPack = getObjectValueByKey(filtered[0], data.pack);
+    console.log(quantityInPack);
     // reset()
   };
 
-
-  const productSelected = selectProduct(products, watch("id"))
+  const productSelected = selectProduct(products, watch("id"));
   const productType = productSelected[0]?.type || defaultType;
-  const productsFilteredByType = filterByType(products, watch("type"))
+  const productsFilteredByType = filterByType(products, watch("type"));
 
-  console.log(productSelected);
-  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={6}>
