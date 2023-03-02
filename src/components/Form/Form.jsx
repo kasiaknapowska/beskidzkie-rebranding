@@ -5,6 +5,7 @@ import CustomRadioGroup from "../CustomRadioGroup/CustomRadioGroup";
 import CustomInput from "../CustomInput/CustomInput";
 import CustomSelect from "../CustomSelect/CustomSelect";
 
+import { selectProduct, filterByType } from "../../utils/functions";
 import { products, defaultType, pack } from "../../data/data";
 
 const Form = () => {
@@ -23,15 +24,13 @@ const Form = () => {
     // reset()
   };
 
-  const productSelected = products.filter(
-    (product) => product.id === watch("id")
-  );
+
+  const productSelected = selectProduct(products, watch("id"))
   const productType = productSelected[0]?.type || defaultType;
-  const typeChosen = watch("type");
-  const productsFilteredByType = products.filter((product) =>
-    product.type.includes(typeChosen)
-  );
+  const productsFilteredByType = filterByType(products, watch("type"))
+
   console.log(productSelected);
+  
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={6}>
