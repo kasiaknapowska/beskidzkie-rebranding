@@ -8,9 +8,14 @@ import { theme } from "./theme/theme";
 import logo from "./images/BeskidzkieLogo.png";
 import Form from "./components/Form/Form";
 import Results from "./components/Results/Results";
+import { useSelector } from "react-redux";
 
 
 function App() {
+
+  const product = useSelector(state => state.productToCount.item)
+
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

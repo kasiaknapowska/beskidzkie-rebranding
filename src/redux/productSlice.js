@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const productSlice = createSlice({
   name: "productToCount",
   initialState: {
-    productToCount: {}
+    item: {}
   },
   reducers: {
     setProductToCount: (state, action) => {
-      state.productToCount = action.payload;
+      state.item = action.payload;
     },
   },
 });
