@@ -22,7 +22,7 @@ export const getProductWeight = (product) => {
 
 export const fixNumber = (n) => n.toFixed(2);
 
-export const ceilNumber = (n) => Math.ceil(n * 100) / 100;
+export const ceilNumber = (n) => Math.ceil(n * 10) / 10;
 
 export const createTableData = (pack, before, after) => {
   return { pack, before, after };
