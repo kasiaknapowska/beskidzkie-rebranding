@@ -4,6 +4,7 @@ import "./App.css";
 import logo from "./images/BeskidzkieLogo.png";
 import Form from "./components/Form/Form";
 import {theme} from "./theme/theme"
+import CustomTable from './components/CustomTable/CustomTable';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       >
         <img src={logo} className="logo" alt="logo" />
         <Form />
+        <CustomTable/>
       </Container>
      </ThemeProvider>
     </div>

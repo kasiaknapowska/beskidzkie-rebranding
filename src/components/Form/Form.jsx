@@ -34,7 +34,7 @@ const Form = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={4}>
-        <Typography variant="subtitle1">Kalkulator Rebranding</Typography>
+        <Typography variant="subtitle1">Rebranding Kalkulator</Typography>
         <CustomSelect
           data={productsFilteredByPackage}
           control={control}
