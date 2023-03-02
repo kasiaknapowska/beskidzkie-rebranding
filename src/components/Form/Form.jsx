@@ -5,32 +5,31 @@ import CustomRadioGroup from "../CustomRadioGroup/CustomRadioGroup";
 import CustomInput from "../CustomInput/CustomInput";
 import CustomSelect from "../CustomSelect/CustomSelect";
 
-import { products, typeSold } from "../../data/data";
+import { products, defaultType, pack } from "../../data/data";
 
 const Form = () => {
   const { control, handleSubmit, watch, reset } = useForm({
     defaultValues: {
-      product: "",
-      pack: "standardowy",
-      typeSold: "",
-      quantitySold: "",
+      id: "",
+      type: "standardowy",
+      pack: "",
+      quantity: "",
     },
   });
 
-  const defaultPack = ["standardowy", "sieciowy"];
   const onSubmit = (data) => {
     console.log(data);
-    console.log(...products.filter((product) => product.id === data.product));
+    console.log(...products.filter((product) => product.id === data.id));
     // reset()
   };
 
   const productSelected = products.filter(
-    (product) => product.id === watch("product")
+    (product) => product.id === watch("id")
   );
-  const productPackage = productSelected[0]?.pack || defaultPack;
-  const packChosen = watch("pack");
-  const productsFilteredByPackage = products.filter((product) =>
-    product.pack.includes(packChosen)
+  const productType = productSelected[0]?.type || defaultType;
+  const typeChosen = watch("type");
+  const productsFilteredByType = products.filter((product) =>
+    product.type.includes(typeChosen)
   );
   console.log(productSelected);
   return (
@@ -40,13 +39,13 @@ const Form = () => {
           REBRANDING KALKULATOR
         </Divider>
         <Stack spacing={2}>
-        <CustomSelect
-          data={productsFilteredByPackage}
-          control={control}
-          name="product"
-          label="Wybierz produkt"
-        />
-        <CustomRadioGroup name="pack" control={control} data={productPackage} />
+          <CustomSelect
+            data={productsFilteredByType}
+            control={control}
+            name="id"
+            label="Wybierz produkt"
+          />
+          <CustomRadioGroup name="type" control={control} data={productType} />
         </Stack>
         {productSelected.length > 0 && (
           <>
@@ -55,7 +54,7 @@ const Form = () => {
             </Divider>
             <Stack spacing={2}>
               <CustomInput
-                name="quantitySold"
+                name="quantity"
                 control={control}
                 label="Podaj ilość"
                 pattern={{
@@ -64,11 +63,7 @@ const Form = () => {
                     "Podaj prawidłową liczbę całkowitą lub ułamek dziesiętny w formacie z ' . ', np. 0.5",
                 }}
               />
-              <CustomRadioGroup
-                name="typeSold"
-                control={control}
-                data={typeSold}
-              />
+              <CustomRadioGroup name="pack" control={control} data={pack} />
             </Stack>
             <Button type="submit" variant="contained" size="large">
               Przelicz

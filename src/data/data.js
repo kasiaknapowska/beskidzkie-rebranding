@@ -1,27 +1,28 @@
-export const typeSold = ["sztuki", "kartony", "palety"];
+export const defaultType = ["standardowy", "sieciowy"];
+export const pack = ["sztuki", "kartony", "palety"];
 
 export const products = [
   {
     id: "Beskidzkie Paluszki z solą",
-    pack: ["standardowy", "sieciowy"],
+    type: ["standardowy", "sieciowy"],
     old: {
       masa: 0.3,
-      standard: {
+      standardowy: {
         karton: 12,
         paleta: 864,
       },
-      siec: {
+      sieciowy: {
         karton: 14,
         paleta: 756,
       },
     },
     new: {
       masa: 0.24,
-      standard: {
+      standardowy: {
         karton: 14,
         paleta: 1120,
       },
-      siec: {
+      sieciowy: {
         karton: 20,
         paleta: 1200,
       },
@@ -29,25 +30,25 @@ export const products = [
   },
   {
     id: "Beskidzkie Paluszki ser-cebula",
-    pack: ["standardowy", "sieciowy"],
+    type: ["standardowy", "sieciowy"],
     old: {
       masa: 0.22,
-      standard: {
+      standardowy: {
         karton: 16,
         paleta: 1152,
       },
-      siec: {
+      sieciowy: {
         karton: 20,
         paleta: 1080,
       },
     },
     new: {
       masa: 0.18,
-      standard: {
+      standardowy: {
         karton: 16,
         paleta: 1280,
       },
-      siec: {
+      sieciowy: {
         karton: 20,
         paleta: 1200,
       },
@@ -55,25 +56,25 @@ export const products = [
   },
   {
     id: "Beskidzkie Paluszki bekonowe",
-    pack: ["standardowy", "sieciowy"],
+    type: ["standardowy", "sieciowy"],
     old: {
       masa: 0.22,
-      standard: {
+      standardowy: {
         karton: 8,
         paleta: 1152,
       },
-      siec: {
+      sieciowy: {
         karton: 20,
         paleta: 1080,
       },
     },
     new: {
       masa: 0.18,
-      standard: {
+      standardowy: {
         karton: 8,
         paleta: 1280,
       },
-      siec: {
+      sieciowy: {
         karton: 20,
         paleta: 1200,
       },
@@ -81,45 +82,45 @@ export const products = [
   },
   {
     id: "Beskidzkie Paluszki ser-pomidor",
-    pack: ["standardowy"],
+    type: ["standardowy"],
     old: {
       masa: 0.21,
-      standard: {
+      standardowy: {
         karton: 16,
         paleta: 1152,
       },
-      siec: null,
+      sieciowy: null,
     },
     new: {
       masa: 0.18,
-      standard: {
+      standardowy: {
         karton: 8,
         paleta: 1280,
       },
-      siec: null,
+      sieciowy: null,
     },
   },
   {
     id: "Beskidzkie Paluszki delikatesowe",
-    pack: ["standardowy", "sieciowy"],
+    type: ["standardowy", "sieciowy"],
     old: {
       masa: 0.25,
-      standard: {
+      standardowy: {
         karton: 14,
         paleta: 1008,
       },
-      siec: {
+      sieciowy: {
         karton: 20,
         paleta: 1080,
       },
     },
     new: {
       masa: 0.2,
-      standard: {
+      standardowy: {
         karton: 16,
         paleta: 1280,
       },
-      siec: {
+      sieciowy: {
         karton: 20,
         paleta: 1200,
       },
@@ -127,82 +128,82 @@ export const products = [
   },
   {
     id: "Beskidzkie Tuba Mix",
-    pack: ["standardowy"],
+    type: ["standardowy"],
     old: {
       masa: 0.3,
-      standard: {
+      standardowy: {
         karton: 12,
         paleta: 720,
       },
-      siec: null,
+      sieciowy: null,
     },
     new: {
       masa: 0.275,
-      standard: {
+      standardowy: {
         karton: 12,
         paleta: 720,
       },
-      siec: null,
+      sieciowy: null,
     },
   },
   {
     id: "Beskidzkie Precelki z solą",
-    pack: ["standardowy"],
+    type: ["standardowy"],
     old: {
       masa: 0.07,
-      standard: {
+      standardowy: {
         karton: 18,
         paleta: 2592,
       },
-      siec: null,
+      sieciowy: null,
     },
     new: {
       masa: 0.06,
-      standard: {
+      standardowy: {
         karton: 18,
         paleta: 2592,
       },
-      siec: null,
+      sieciowy: null,
     },
   },
   {
     id: "Beskidzkie Prażynki z solą",
-    pack: ["standardowy"],
+    type: ["standardowy"],
     old: {
       masa: 0.12,
-      standard: {
+      standardowy: {
         karton: 14,
         paleta: 280,
       },
-      siec: null,
+      sieciowy: null,
     },
     new: {
       masa: 0.08,
-      standard: {
+      standardowy: {
         karton: 20,
         paleta: 560,
       },
-      siec: null,
+      sieciowy: null,
     },
   },
   {
     id: "Beskidzkie Prażynki bekonowe",
-    pack: ["standardowy"],
+    type: ["standardowy"],
     old: {
       masa: 0.12,
-      standard: {
+      standardowy: {
         karton: 14,
         paleta: 280,
       },
-      siec: null,
+      sieciowy: null,
     },
     new: {
       masa: 0.08,
-      standard: {
+      standardowy: {
         karton: 20,
         paleta: 560,
       },
-      siec: null,
+      sieciowy: null,
     },
   },
 ];

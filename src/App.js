@@ -1,11 +1,14 @@
+
 import { ThemeProvider } from "@mui/material/styles";
 import { Container, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
+
 import "./App.css";
+import { theme } from "./theme/theme";
 import logo from "./images/BeskidzkieLogo.png";
 import Form from "./components/Form/Form";
-import { theme } from "./theme/theme";
 import Results from "./components/Results/Results";
-import { Stack } from "@mui/system";
+
 
 function App() {
   return (
