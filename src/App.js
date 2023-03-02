@@ -13,8 +13,8 @@ import { useSelector } from "react-redux";
 
 function App() {
 
-  const product = useSelector(state => state.productToCount.item)
-
+const product = useSelector(state => state.product.selected)
+console.log(product)
 
   return (
     <div className="App">

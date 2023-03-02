@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
-import { setProductToCount } from "../../redux/productSlice";
+import { setSelected } from "../../redux/productSlice";
 
 import { Button, Stack, Divider } from "@mui/material";
 import CustomRadioGroup from "../CustomRadioGroup/CustomRadioGroup";
@@ -27,11 +27,12 @@ const Form = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    dispatch(setProductToCount(data));
+    dispatch(setSelected(data));
     // reset()
   };
 
   const productSelected = selectProduct(products, watch("id"));
+  console.log(watch("id"))
   const productType = productSelected[0]?.type || defaultType;
   const productsFilteredByType = filterByType(products, watch("type"));
 

@@ -18,6 +18,15 @@ export const theme = createTheme({
             fontWeight: 600,
             textTransform: 'uppercase',
         },
+        subtitle1: {
+          fontSize: 18,
+          fontWeight: 600,
+          textTransform: 'uppercase',
+      },
+      subtitle2: {
+        fontSize: 18,
+        fontWeight: 600,
+    },
     },
     components: {
         MuiButton: {

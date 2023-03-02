@@ -1,4 +1,5 @@
 import React from 'react'
+import { createTableData } from '../../utils/functions';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,39 +7,33 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
-function createData(name, calories, fat) {
-    return { name, calories, fat };
-  }
   
   const rows = [
-    createData('Ilość sztuk', 1, 1),
-    createData('Ilość kartonów', 1, 1),
-    createData('Ilość palet', 1, 1),
+    createTableData('Ilość sztuk', 1, 1),
+    createTableData('Ilość kartonów', 1, 1),
+    createTableData('Ilość palet', 1, 1),
   ];
 
-const CustomTable = () => {
+const CustomTable = ({header, trows}) => {
   return (
     <TableContainer component={Paper} variant="outlined">
     <Table aria-label="table">
       <TableHead>
         <TableRow>
-          <TableCell>Nazwa produktu / kg</TableCell>
-          <TableCell align="right">Było</TableCell>
-          <TableCell align="right">Jest</TableCell>
+          {header.map(el => <TableCell key={el} align="right" sx={{textTransform: "uppercase"}}>{el}</TableCell>)}
         </TableRow>
       </TableHead>
       <TableBody>
         {rows.map((row) => (
           <TableRow
-            key={row.name}
+            key={row.pack}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
             <TableCell component="th" scope="row">
-              {row.name}
+              {row.pack}
             </TableCell>
-            <TableCell align="right">{row.calories}</TableCell>
-            <TableCell align="right">{row.fat}</TableCell>
+            <TableCell align="right">{row.before}</TableCell>
+            <TableCell align="right">{row.after}</TableCell>
           </TableRow>
         ))}
       </TableBody>

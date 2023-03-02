@@ -1,17 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { selectProduct } from "../utils/functions";
+import {products} from "../data/data"
 
 export const productSlice = createSlice({
-  name: "productToCount",
+  name: "product",
   initialState: {
-    item: {}
+    selected: {},
+    productData: [],
   },
   reducers: {
-    setProductToCount: (state, action) => {
-      state.item = action.payload;
+    setSelected: (state, action) => {
+      state.selected = action.payload;
+
+      productSlice.caseReducers.setProductData(state);
     },
+    setProductData: (state, action) => {
+      state.productData = selectProduct(products, state.selected.id)
+    }
   },
 });
 
 
-export const { setProductToCount } = productSlice.actions;
+export const { setSelected } = productSlice.actions;
 export default productSlice.reducer;

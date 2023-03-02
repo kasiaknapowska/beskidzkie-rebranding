@@ -4,39 +4,41 @@ import { products } from "../data/data";
 import {
   selectProduct,
   getObjectValueByKey,
-  getWolumenWeight,
+  calcWolumenWeight,
 } from "../utils/functions";
 
 const useWolumenCalculator = () => {
   const [wolumen, setWolumen] = useState(0);
+  const [productWeight, setProductWeight] = useState({ before: 0, after: 0 });
 
-  const productToCount = useSelector((state) => state.productToCount.item);
-  const product = selectProduct(products, productToCount.id);
+  const productToCount = useSelector((state) => state.product.selected);
+  const { id, type, pack, quantity } = productToCount;
+  // const product = selectProduct(products, id);
+  const product = useSelector((state) => state.product.productData)
 
   useEffect(() => {
     if (product.length === 1) {
-      const { old } = product[0];
-      const productWeight = old.masa;
-      const quantity = Number(productToCount.quantity);
-      const type = productToCount.type;
-      const pack = productToCount.pack;
-      const typeFiltered = getObjectValueByKey(old, type);
-      const packQuantity = getObjectValueByKey(typeFiltered[0], pack);
+      const { old: before, new: after } = product[0];
 
-      console.log(typeFiltered[0]);
-      console.log(product);
-      console.log(productToCount);
-      console.log(packQuantity);
+      const oldProductWeight = before.masa * 1000;
+      const newProductWeight = after.masa * 1000;
+
+      const packQuantity = getObjectValueByKey(
+        getObjectValueByKey(before, type)[0],
+        pack
+      );
+      // console.log(productToCount);
+      // console.log(product[0]);
+      // console.log(packQuantity);
 
       const packQ = packQuantity.length === 1 ? packQuantity[0] : 1;
-      const weight = getWolumenWeight(productWeight, quantity, packQ);
+      const weight = calcWolumenWeight(before.masa, Number(quantity), packQ);
       setWolumen(weight);
+      setProductWeight({ before: oldProductWeight, after: newProductWeight });
     }
   }, [productToCount]);
 
-  // console.log(wolumen);
-
-  return [wolumen];
+  return [wolumen, productWeight];
 };
 
 export default useWolumenCalculator;
