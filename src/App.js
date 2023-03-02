@@ -13,8 +13,7 @@ import { useSelector } from "react-redux";
 
 function App() {
 
-const product = useSelector(state => state.product.selected)
-console.log(product)
+const product = useSelector(state => state.product.productData)
 
   return (
     <div className="App">
@@ -30,9 +29,9 @@ console.log(product)
           }}
         >
           <img src={logo} className="logo" alt="logo" />
-          <Stack spacing={6} sx={{ width: "100%" }}>
+          <Stack spacing={8} sx={{ width: "100%" }}>
             <Form />
-            <Results />
+            {product.length === 1 && <Results />}
           </Stack>
         </Container>
       </ThemeProvider>

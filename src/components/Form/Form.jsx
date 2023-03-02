@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
-import { setSelected } from "../../redux/productSlice";
+import { setProductData, setSelected } from "../../redux/productSlice";
 
 import { Button, Stack, Divider } from "@mui/material";
 import CustomRadioGroup from "../CustomRadioGroup/CustomRadioGroup";
@@ -10,7 +10,7 @@ import CustomInput from "../CustomInput/CustomInput";
 import CustomSelect from "../CustomSelect/CustomSelect";
 
 import {
-  selectProduct,
+  filterById,
   filterByType,
 } from "../../utils/functions";
 import { products, defaultType, pack } from "../../data/data";
@@ -28,14 +28,15 @@ const Form = () => {
 
   const onSubmit = (data) => {
     dispatch(setSelected(data));
+    // dispatch(setProductData(filterById(products, data.id)))
     // reset()
   };
 
-  const productSelected = selectProduct(products, watch("id"));
-  console.log(watch("id"))
-  const productType = productSelected[0]?.type || defaultType;
+  const productsFilteredById = filterById(products, watch("id"));
+  const productType = productsFilteredById[0]?.type || defaultType;
   const productsFilteredByType = filterByType(products, watch("type"));
 
+  console.log("form")
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={6}>
@@ -51,7 +52,7 @@ const Form = () => {
           />
           <CustomRadioGroup name="type" control={control} data={productType} />
         </Stack>
-        {productSelected.length > 0 && (
+        {productsFilteredById.length > 0 && (
           <>
             <Divider role="presentation" textAlign="left">
               SPRZEDANY WOLUMEN

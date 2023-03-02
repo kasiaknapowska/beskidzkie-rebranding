@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { selectProduct } from "../utils/functions";
+import { filterById } from "../utils/functions";
 import {products} from "../data/data"
 
 export const productSlice = createSlice({
@@ -15,11 +15,11 @@ export const productSlice = createSlice({
       productSlice.caseReducers.setProductData(state);
     },
     setProductData: (state, action) => {
-      state.productData = selectProduct(products, state.selected.id)
+      state.productData = filterById(products, state.selected.id)
     }
   },
 });
 
 
-export const { setSelected } = productSlice.actions;
+export const { setSelected, setProductData } = productSlice.actions;
 export default productSlice.reducer;
