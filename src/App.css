@@ -1,12 +1,11 @@
 .logo {
   width: 100%;
-max-width: 300px;
-object-fit: "contain";
+  max-width: 300px;
+  object-fit: "contain";
 }
 form {
   width: 100%;
 }
 .error {
   color: #d32f2f;
- 
 }

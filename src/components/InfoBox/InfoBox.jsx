@@ -1,0 +1,26 @@
+import React from "react";
+import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
+
+const InfoBox = ({title, text}) => {
+  return (
+    <Box
+      sx={{
+        width: "100%",
+        padding: "14px",
+        fontSize: '14px',
+        color: "white",
+        textTransform: "uppercase",
+        borderRadius: "4px",
+        backgroundColor: "secondary.dark",
+        display: "flex",
+        justifyContent: "space-between",
+      }}
+    >
+      <Typography>{title} </Typography>
+      <Typography>{text} kg</Typography>
+    </Box>
+  );
+};
+
+export default InfoBox;

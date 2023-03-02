@@ -19,7 +19,7 @@ function createData(name, calories, fat) {
 
 const CustomTable = () => {
   return (
-    <TableContainer >
+    <TableContainer component={Paper} variant="outlined">
     <Table aria-label="table">
       <TableHead>
         <TableRow>

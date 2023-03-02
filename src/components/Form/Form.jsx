@@ -16,6 +16,8 @@ const Form = () => {
       quantitySold: "",
     },
   });
+
+  const defaultPack = ["standardowy", "sieciowy"];
   const onSubmit = (data) => {
     console.log(data);
     console.log(...products.filter((product) => product.id === data.product));
@@ -25,46 +27,49 @@ const Form = () => {
   const productSelected = products.filter(
     (product) => product.id === watch("product")
   );
-  const productPackage = productSelected[0]?.pack;
-  const packChosen = watch("pack")
-  const productsFilteredByPackage = products.filter(
-    (product) => product.pack.includes(packChosen) 
+  const productPackage = productSelected[0]?.pack || defaultPack;
+  const packChosen = watch("pack");
+  const productsFilteredByPackage = products.filter((product) =>
+    product.pack.includes(packChosen)
   );
-  
+  console.log(productSelected);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Stack spacing={4}>
-        <Typography variant="subtitle1">Rebranding Kalkulator</Typography>
+      <Stack spacing={6}>
+        <Divider role="presentation" textAlign="left">
+          REBRANDING KALKULATOR
+        </Divider>
+        <Stack spacing={2}>
         <CustomSelect
           data={productsFilteredByPackage}
           control={control}
           name="product"
           label="Wybierz produkt"
         />
-        {productSelected && productPackage && (
+        <CustomRadioGroup name="pack" control={control} data={productPackage} />
+        </Stack>
+        {productSelected.length > 0 && (
           <>
-            <CustomRadioGroup
-              name="pack"
-              control={control}
-              data={productPackage}
-            />
-            <Divider />
-            <Typography variant="subtitle1">Sprzedany wolumen</Typography>
-            <CustomInput
-              name="quantitySold"
-              control={control}
-              label="Podaj ilość"
-              pattern={{
-                value: /^(?=.+)(?:[1-9]\d*|0)?(?:\.\d+)?$/,
-                message:
-                  "Podaj prawidłową liczbę całkowitą lub ułamek dziesiętny w formacie z ' . ', np. 0.5",
-              }}
-            />
-            <CustomRadioGroup
-              name="typeSold"
-              control={control}
-              data={typeSold}
-            />
+            <Divider role="presentation" textAlign="left">
+              SPRZEDANY WOLUMEN
+            </Divider>
+            <Stack spacing={2}>
+              <CustomInput
+                name="quantitySold"
+                control={control}
+                label="Podaj ilość"
+                pattern={{
+                  value: /^(?=.+)(?:[1-9]\d*|0)?(?:\.\d+)?$/,
+                  message:
+                    "Podaj prawidłową liczbę całkowitą lub ułamek dziesiętny w formacie z ' . ', np. 0.5",
+                }}
+              />
+              <CustomRadioGroup
+                name="typeSold"
+                control={control}
+                data={typeSold}
+              />
+            </Stack>
             <Button type="submit" variant="contained" size="large">
               Przelicz
             </Button>
