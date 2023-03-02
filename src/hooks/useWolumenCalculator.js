@@ -13,26 +13,29 @@ const useWolumenCalculator = () => {
   const productToCount = useSelector((state) => state.productToCount.item);
   const product = selectProduct(products, productToCount.id);
 
-  // console.log(product);
   useEffect(() => {
     if (product.length === 1) {
       const { old } = product[0];
       const productWeight = old.masa;
       const quantity = Number(productToCount.quantity);
-      const filtered = getObjectValueByKey(old, productToCount.type);
-      // console.log(filtered[0]);
-      const packQuantity = getObjectValueByKey(
-        filtered[0],
-        productToCount.pack
-      );
-      console.log(...packQuantity);
+      const type = productToCount.type;
+      const pack = productToCount.pack;
+      const typeFiltered = getObjectValueByKey(old, type);
+      const packQuantity = getObjectValueByKey(typeFiltered[0], pack);
+
+      console.log(typeFiltered[0]);
+      console.log(product);
+      console.log(productToCount);
+      console.log(packQuantity);
 
       const packQ = packQuantity.length === 1 ? packQuantity[0] : 1;
       const weight = getWolumenWeight(productWeight, quantity, packQ);
       setWolumen(weight);
     }
   }, [productToCount]);
+
   // console.log(wolumen);
+
   return [wolumen];
 };
 

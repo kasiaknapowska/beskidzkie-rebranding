@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import { setProductToCount } from "../../redux/productSlice";
 
-import { Button, Stack, Typography, Divider } from "@mui/material";
+import { Button, Stack, Divider } from "@mui/material";
 import CustomRadioGroup from "../CustomRadioGroup/CustomRadioGroup";
 import CustomInput from "../CustomInput/CustomInput";
 import CustomSelect from "../CustomSelect/CustomSelect";
@@ -12,7 +12,6 @@ import CustomSelect from "../CustomSelect/CustomSelect";
 import {
   selectProduct,
   filterByType,
-  getObjectValueByKey,
 } from "../../utils/functions";
 import { products, defaultType, pack } from "../../data/data";
 
@@ -28,17 +27,7 @@ const Form = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    // console.log(data);
-    // console.log(...selectProduct(products, data.id));
     dispatch(setProductToCount(data));
-
-    const productS = selectProduct(products, data.id);
-    // console.log(productS)
-    console.log(productS[0].old);
-    const filtered = getObjectValueByKey(productS[0].old, data.type);
-    console.log(filtered[0]);
-    const quantityInPack = getObjectValueByKey(filtered[0], data.pack);
-    console.log(quantityInPack);
     // reset()
   };
 
