@@ -35,7 +35,7 @@ const Form = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={6}>
         <Divider role="presentation" textAlign="left">
-          REBRANDING KALKULATOR
+          DOWNSIZING KALKULATOR
         </Divider>
         <Stack spacing={2}>
           <CustomSelect
