@@ -4,10 +4,10 @@ import { getObjectValueByKey, calcQuantity } from "../utils/functions";
 import useWolumenCalculator from "./useWolumenCalculator";
 
 const useQuantityCalculator = () => {
+  const [quantity, setQuantity] = useState({});
   const [wolumen] = useWolumenCalculator();
   const product = useSelector((state) => state.product.productData);
   const productToCount = useSelector((state) => state.product.selected);
-  const [quantity, setQuantity] = useState({});
 
   useEffect(() => {
     if (product.length === 1) {

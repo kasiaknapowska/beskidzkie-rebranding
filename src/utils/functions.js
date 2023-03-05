@@ -22,7 +22,7 @@ export const getProductWeight = (product) => {
 
 export const fixNumber = (n) => n.toFixed(2);
 
-export const ceilNumber = (n) => Math.ceil(n * 10) / 10;
+export const roundNumber = (n) => Math.round(n * 100) / 100;
 
 export const createTableData = (pack, before, after) => {
   return { pack, before, after };
@@ -35,8 +35,8 @@ export const calcQuantity = (
   packsBefore = 1,
   packsAfter = 1
 ) => {
-  const before = ceilNumber(wolumen / weightBefore / packsBefore);
-  const after = ceilNumber(wolumen / weightAfter / packsAfter);
+  const before = roundNumber(wolumen / weightBefore / packsBefore);
+  const after = roundNumber(wolumen / weightAfter / packsAfter);
 
   return { before, after };
 };

@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 
 const CustomInput = ({ control, name, pattern, label, ...props }) => {
   const {
-    field: { onChange, value, ref },
+    field: { onChange, value },
     fieldState: { error },
   } = useController({
     name,
@@ -19,11 +19,8 @@ const CustomInput = ({ control, name, pattern, label, ...props }) => {
       value={value}
       helperText={error ? error.message : null}
       error={!!error}
-      inputRef={ref}
+      autoComplete="off"
       {...props}
-      //   InputProps={{
-      //     endAdornment: <InputAdornment position="end">sztuk</InputAdornment>,
-      //   }}
     />
   );
 };

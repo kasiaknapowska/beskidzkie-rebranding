@@ -1,6 +1,5 @@
-
 import { ThemeProvider } from "@mui/material/styles";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import { Stack } from "@mui/system";
 
 import "./App.css";
@@ -10,10 +9,8 @@ import Form from "./components/Form/Form";
 import Results from "./components/Results/Results";
 import { useSelector } from "react-redux";
 
-
 function App() {
-
-const product = useSelector(state => state.product.productData)
+  const product = useSelector((state) => state.product.productData);
 
   return (
     <div className="App">

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useWolumenCalculator from "../../hooks/useWolumenCalculator";
-import { createTableData, fixNumber } from "../../utils/functions";
+import { fixNumber } from "../../utils/functions";
 import { Divider, Stack } from "@mui/material";
 import CustomTable from "../CustomTable/CustomTable";
 import InfoBox from "../InfoBox/InfoBox";

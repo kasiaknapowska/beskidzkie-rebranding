@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 
-import { setProductData, setSelected } from "../../redux/productSlice";
+import { setSelected } from "../../redux/productSlice";
 
 import { Button, Stack, Divider } from "@mui/material";
 import CustomRadioGroup from "../CustomRadioGroup/CustomRadioGroup";
@@ -46,33 +46,30 @@ const Form = () => {
           />
           <CustomRadioGroup name="type" control={control} data={productType} />
         </Stack>
-        {productsFilteredById.length > 0 && (
-          <>
-            <Divider role="presentation" textAlign="left">
-              SPRZEDANY WOLUMEN
-            </Divider>
-            <Stack spacing={2}>
-              <CustomInput
-                name="quantity"
-                control={control}
-                label="Podaj ilość"
-                pattern={{
-                  value: /^(?=.+)(?:[1-9]\d*|0)?(?:\.\d+)?$/,
-                  message:
-                    "Podaj prawidłową liczbę całkowitą lub ułamek dziesiętny w formacie z ' . ', np. 0.5",
-                }}
-              />
-              <CustomRadioGroup name="pack" control={control} data={pack} />
-            </Stack>
+        <Divider role="presentation" textAlign="left">
+          SPRZEDANY WOLUMEN
+        </Divider>
+        <Stack spacing={2}>
+          <CustomInput
+            name="quantity"
+            control={control}
+            label="Podaj ilość"
+            type="number"
+            pattern={{
+              value: /^(?=.+)(?:[1-9]\d*|0)?(?:\.\d+)?$/,
+              message:
+                "Podaj prawidłową liczbę całkowitą lub ułamek dziesiętny w formacie z ' . ', np. 0.5",
+            }}
+          />
+          <CustomRadioGroup name="pack" control={control} data={pack} />
+        </Stack>
 
-            <Button type="submit" variant="contained" size="large">
-              Przelicz
-            </Button>
-            <Button variant="outlined" onClick={() => reset()}>
-              Reset
-            </Button>
-          </>
-        )}
+        <Button type="submit" variant="contained" size="large">
+          Przelicz
+        </Button>
+        <Button variant="outlined" onClick={() => reset()}>
+          Reset
+        </Button>
       </Stack>
     </form>
   );
