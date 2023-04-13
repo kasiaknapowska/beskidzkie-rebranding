@@ -24,7 +24,7 @@ const DownsizingCalculator = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    dispatch(setSelected(data));
+    dispatch(setSelected({selected: data, products: products}));
   };
 
   const productsFilteredById = filterById(products, watch("id"));

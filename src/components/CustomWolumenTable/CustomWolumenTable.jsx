@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-const CustomTable = ({ header, content }) => {
+const CustomWolumenTable = ({ header, content }) => {
   const { piece, carton, pallet } = content;
   const rows = [
     createTableData("Ilość sztuk", piece.before, piece.after),
@@ -51,4 +51,4 @@ const CustomTable = ({ header, content }) => {
   );
 };
 
-export default CustomTable;
+export default CustomWolumenTable;

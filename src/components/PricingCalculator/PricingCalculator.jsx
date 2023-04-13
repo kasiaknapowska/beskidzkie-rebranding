@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
-
+import { setSelected } from "../../redux/productSlice";
 import { Button, Stack, Divider } from "@mui/material";
 
 import {competitiveProducts} from "../../data/data"
@@ -10,7 +10,7 @@ import CustomSelect from "../CustomSelect/CustomSelect";
 
 
 const PricingCalculator = () => {
-  const { control, handleSubmit, watch, reset } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     defaultValues: {
       id: "",
       price: "",
@@ -20,8 +20,9 @@ const PricingCalculator = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(setSelected({selected: data, products: competitiveProducts}));
   };
-// const productsToCompare = competitiveProducts.map(product => product.id)
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={6}>

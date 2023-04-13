@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Stack, Typography } from "@mui/material";
 import TrendingFlatOutlinedIcon from "@mui/icons-material/TrendingFlatOutlined";
@@ -11,6 +11,9 @@ const ProductDetails = () => {
   const product = useSelector((state) => state.product.productData);
   const productWeight = getProductWeight(...product);
 
+  useEffect(() => {
+    console.log(product)
+  })
   return (
     <Stack spacing={2}>
       <Typography variant="subtitle1">{id}</Typography>

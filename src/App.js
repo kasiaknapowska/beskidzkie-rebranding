@@ -1,6 +1,5 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { Button, Container, Typography } from "@mui/material";
-import { Stack } from "@mui/system";
 
 import "./App.css";
 import { theme } from "./theme/theme";
@@ -8,12 +7,16 @@ import logo from "./images/BeskidzkieLogo.png";
 import DownsizingCalculator from "./components/DownsizingCalculator/DownsizingCalculator";
 import Results from "./components/Results/Results";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PricingCalculator from "./components/PricingCalculator/PricingCalculator";
 
 function App() {
   const product = useSelector((state) => state.product.productData);
   const [calc, setCalc] = useState(null);
+
+  useEffect(() => {
+    console.log(product)
+  })
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -58,7 +61,7 @@ function App() {
           {calc === "downsizing" && (
             <>
               <DownsizingCalculator />
-              {product.length === 1 && <Results />}
+              {product.length === 1 && product[0].type ? <Results /> : null}
             </>
           )}
           {calc === "pricing" && (
