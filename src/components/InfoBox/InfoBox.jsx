@@ -17,7 +17,7 @@ const InfoBox = ({title, text}) => {
       }}
     >
       <Typography sx={{textTransform: "uppercase"}}>{title} </Typography>
-      <Typography>{text} kg</Typography>
+      <Typography>{text}</Typography>
     </Box>
   );
 };

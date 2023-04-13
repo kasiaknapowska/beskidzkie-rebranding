@@ -5,7 +5,7 @@ import "./App.css";
 import { theme } from "./theme/theme";
 import logo from "./images/BeskidzkieLogo.png";
 import DownsizingCalculator from "./components/DownsizingCalculator/DownsizingCalculator";
-import Results from "./components/Results/Results";
+import DCResults from "./components/DCResults/DCResults";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import PricingCalculator from "./components/PricingCalculator/PricingCalculator";
@@ -38,13 +38,15 @@ function App() {
               gap: "30px",
               flexWrap: "wrap",
               justifyContent: "center",
-              marginBottom: "30px",
+              padding: "0",
+              margin: "0 0 30px 0",
+             
             }}
           >
             <Button
               variant={calc === "downsizing" ? "contained" : "outlined"}
               size="large"
-              sx={{ minWidth: "150px"}}
+              sx={{ minWidth: "260px"}}
               onClick={() => setCalc("downsizing")}
             >
               Downsizing Kalkulator
@@ -52,7 +54,7 @@ function App() {
             <Button
               variant={calc === "pricing" ? "contained" : "outlined"}
               size="large"
-              sx={{ minWidth: "150px" }}
+              sx={{ minWidth: "260px" }}
               onClick={() => setCalc("pricing")}
             >
               Pricing Kalkulator
@@ -61,7 +63,7 @@ function App() {
           {calc === "downsizing" && (
             <>
               <DownsizingCalculator />
-              {product.length === 1 && product[0].type ? <Results /> : null}
+              {product.length === 1 && product[0].type ? <DCResults /> : null}
             </>
           )}
           {calc === "pricing" && (

@@ -4,10 +4,10 @@ import { fixNumber } from "../../utils/functions";
 import { Divider, Stack } from "@mui/material";
 import CustomWolumenTable from "../CustomWolumenTable/CustomWolumenTable";
 import InfoBox from "../InfoBox/InfoBox";
-import ProductDetails from "../ProductDetails/ProductDetails";
+import DCProductDetails from "../DCProductDetails/DCProductDetails";
 import useQuantityCalculator from "../../hooks/useQuantityCalculator";
 
-const Results = () => {
+const DCResults = () => {
   const [wolumen] = useWolumenCalculator();
   const [quantity] = useQuantityCalculator();
   const wolumenFixed = fixNumber(wolumen);
@@ -17,8 +17,8 @@ const Results = () => {
       <Divider role="presentation" textAlign="left">
         WYNIKI
       </Divider>
-      <ProductDetails />
-      <InfoBox title="wolumen" text={wolumenFixed} />
+      <DCProductDetails />
+      <InfoBox title="wolumen" text={`${wolumenFixed} kg`} />
       {Object.keys(quantity).length > 0 && (
         <CustomWolumenTable header={["", "Było", "Jest"]} content={quantity} />
       )}
@@ -26,4 +26,4 @@ const Results = () => {
   );
 };
 
-export default Results;
+export default DCResults;

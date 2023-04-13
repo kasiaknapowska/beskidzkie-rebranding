@@ -4,7 +4,7 @@ import { Stack, Typography } from "@mui/material";
 import TrendingFlatOutlinedIcon from "@mui/icons-material/TrendingFlatOutlined";
 import { getProductWeight } from "../../utils/functions";
 
-const ProductDetails = () => {
+const DCProductDetails = () => {
   const { id, type, pack, quantity } = useSelector(
     (state) => state.product.selected
   );
@@ -31,4 +31,4 @@ const ProductDetails = () => {
   );
 };
 
-export default ProductDetails;
+export default DCProductDetails;
