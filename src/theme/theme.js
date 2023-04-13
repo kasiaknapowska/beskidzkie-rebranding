@@ -14,10 +14,12 @@ export const theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: 28,
+      fontSize: 24,
       fontFamily: "Roboto, sans-serif",
       fontWeight: 600,
+      textAlign: "center",
       textTransform: "uppercase",
+      lineHeight: 1.6
     },
     subtitle1: {
       fontSize: 18,
