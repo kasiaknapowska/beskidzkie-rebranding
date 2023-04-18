@@ -34,9 +34,6 @@ const DownsizingCalculator = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={6}>
-        <Divider role="presentation" textAlign="left">
-          DOWNSIZING KALKULATOR
-        </Divider>
         <Stack spacing={2}>
           <CustomSelect
             data={productsFilteredByType}

@@ -1,5 +1,5 @@
 import { ThemeProvider } from "@mui/material/styles";
-import { Button, Container, Typography } from "@mui/material";
+import { Button, Container } from "@mui/material";
 
 import "./App.css";
 import { theme } from "./theme/theme";
@@ -47,7 +47,7 @@ function App() {
             <Button
               variant={calc === "downsizing" ? "contained" : "outlined"}
               size="large"
-              sx={{ minWidth: "260px"}}
+              sx={{ flexBasis: "260px"}}
               onClick={() => setCalc("downsizing")}
             >
               Downsizing Kalkulator
@@ -55,7 +55,7 @@ function App() {
             <Button
               variant={calc === "pricing" ? "contained" : "outlined"}
               size="large"
-              sx={{ minWidth: "260px" }}
+              sx={{ flexBasis: "260px" }}
               onClick={() => setCalc("pricing")}
             >
               Pricing Kalkulator

@@ -22,13 +22,13 @@ export const theme = createTheme({
       lineHeight: 1.6
     },
     subtitle1: {
-      fontSize: 18,
+      fontSize: 16,
       fontFamily: "Roboto, sans-serif",
       fontWeight: 600,
       textTransform: "uppercase",
     },
     subtitle2: {
-      fontSize: 18,
+      fontSize: 16,
       fontFamily: "Roboto, sans-serif",
       fontWeight: 600,
     },

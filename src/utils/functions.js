@@ -40,3 +40,7 @@ export const calcQuantity = (
 
   return { before, after };
 };
+
+export const multiply = (n1, n2) => n1 * n2
+export const getPricePer100g = (price, weight) => price * 0.1 / weight
+export const getPrice = (pricePer100g, weight) => pricePer100g * weight / 0.1

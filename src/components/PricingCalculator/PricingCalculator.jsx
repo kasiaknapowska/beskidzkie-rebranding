@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setSelected } from "../../redux/productSlice";
-import { Button, Stack, Divider } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 
 import {competitiveProducts} from "../../data/data"
 import CustomInput from "../CustomInput/CustomInput";
@@ -19,16 +19,12 @@ const PricingCalculator = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    // console.log(data);
     dispatch(setSelected({selected: data, products: competitiveProducts}));
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={6}>
-        <Divider role="presentation" textAlign="left">
-          PRICING KALKULATOR
-        </Divider>
         <Stack spacing={4}>
           <CustomSelect
             data={competitiveProducts}
