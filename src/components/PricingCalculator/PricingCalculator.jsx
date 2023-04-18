@@ -19,7 +19,7 @@ const PricingCalculator = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     dispatch(setSelected({selected: data, products: competitiveProducts}));
   };
 
@@ -29,7 +29,7 @@ const PricingCalculator = () => {
         <Divider role="presentation" textAlign="left">
           PRICING KALKULATOR
         </Divider>
-        <Stack spacing={2}>
+        <Stack spacing={4}>
           <CustomSelect
             data={competitiveProducts}
             control={control}
@@ -39,7 +39,7 @@ const PricingCalculator = () => {
           <CustomInput
             name="price"
             control={control}
-            label="Podaj cenę"
+            label="Podaj cenę (PLN)"
             type="number"
             pattern={{
               value: /^(?=.+)(?:[1-9]\d*|0)?(?:\.\d+)?$/,

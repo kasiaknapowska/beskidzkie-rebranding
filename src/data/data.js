@@ -1,46 +1,7 @@
 export const defaultType = ["standardowy", "sieciowy"];
 export const pack = ["sztuka", "karton", "paleta"];
 
-export const competitiveProducts = [
-  {
-    id: "Lajkonik Paluszki z solą 300g",
-    masa: 0.3,
-    compared: [{ id: "Beskidzkie Paluszki z solą 240g", masa: 0.24 }],
-    factor: 0.9,
-  },
-  {
-    id: "Lajkonik Paluszki z solą 200g",
-    masa: 0.2,
-    compared: [{ id: "Beskidzkie Paluszki z solą 240g", masa: 0.24 }, { id: "Beskidzkie Paluszki z solą 200g", masa: 0.2 }],
-    factor: 0.9,
-  },
-  {
-    id: "Lajkonik Paluszki z solą 70g",
-    masa: 0.07,
-    compared: [{ id: "Beskidzkie Paluszki z solą 70g", masa: 0.07 }],
-    factor: 0.9,
-  },
-  {
-    id: "Lajkonik Paluszki cebulowe 150g",
-    masa: 0.15,
-    compared: [{ id: "Beskidzkie Paluszki ser-cebulka 180g", masa: 0.18 }],
-    factor: 0.8,
-  },
-  {
-    id: "Lajkonik Precelki z solą 130g",
-    masa: 0.13,
-    compared: [{ id: "Beskidzkie Precelki z solą 140g", masa: 0.14 }],
-    factor: 0.9,
-  },
-  {
-    id: "Lajkonik Krakersy z solą 90g",
-    masa: 0.09,
-    compared: [{ id: "Beskidzkie Krakersy z solą 90g", masa: 0.09 }],
-    factor: 0.9,
-  },
-];
-
-export const products = [
+export const downsizedProducts = [
   {
     id: "Beskidzkie Paluszki z solą",
     type: ["standardowy", "sieciowy"],
@@ -244,5 +205,45 @@ export const products = [
       },
       sieciowy: null,
     },
+  },
+];
+
+
+export const competitiveProducts = [
+  {
+    id: "Lajkonik Paluszki z solą 300g",
+    masa: 0.3,
+    compared: [{ id: "Beskidzkie Paluszki z solą 240g", masa: 0.24 }],
+    factor: 0.9,
+  },
+  {
+    id: "Lajkonik Paluszki z solą 200g",
+    masa: 0.2,
+    compared: [{ id: "Beskidzkie Paluszki z solą 240g", masa: 0.24 }, { id: "Beskidzkie Paluszki z solą 200g", masa: 0.2 }],
+    factor: 0.9,
+  },
+  {
+    id: "Lajkonik Paluszki z solą 70g",
+    masa: 0.07,
+    compared: [{ id: "Beskidzkie Paluszki z solą 70g", masa: 0.07 }],
+    factor: 0.9,
+  },
+  {
+    id: "Lajkonik Paluszki cebulowe 150g",
+    masa: 0.15,
+    compared: [{ id: "Beskidzkie Paluszki ser-cebulka 180g", masa: 0.18 }],
+    factor: 0.8,
+  },
+  {
+    id: "Lajkonik Precelki z solą 130g",
+    masa: 0.13,
+    compared: [{ id: "Beskidzkie Precelki z solą 140g", masa: 0.14 }],
+    factor: 0.9,
+  },
+  {
+    id: "Lajkonik Krakersy z solą 90g",
+    masa: 0.09,
+    compared: [{ id: "Beskidzkie Krakersy z solą 90g", masa: 0.09 }],
+    factor: 0.9,
   },
 ];

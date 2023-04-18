@@ -32,7 +32,7 @@ export const productSlice = createSlice({
   },
   reducers: {
     setSelected: (state, action) => {
-      console.log(action.payload)
+      // console.log(action.payload)
       state.selected = action.payload.selected;
       state.productData = filterById(action.payload.products, action.payload.selected.id)
     },

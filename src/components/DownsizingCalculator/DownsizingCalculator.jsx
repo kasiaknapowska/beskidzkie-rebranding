@@ -10,7 +10,7 @@ import CustomInput from "../CustomInput/CustomInput";
 import CustomSelect from "../CustomSelect/CustomSelect";
 
 import { filterById, filterByType } from "../../utils/functions";
-import { products, defaultType, pack } from "../../data/data";
+import { downsizedProducts, defaultType, pack } from "../../data/data";
 
 const DownsizingCalculator = () => {
   const { control, handleSubmit, watch, reset } = useForm({
@@ -24,12 +24,12 @@ const DownsizingCalculator = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    dispatch(setSelected({selected: data, products: products}));
+    dispatch(setSelected({selected: data, products: downsizedProducts}));
   };
 
-  const productsFilteredById = filterById(products, watch("id"));
+  const productsFilteredById = filterById(downsizedProducts, watch("id"));
   const productType = productsFilteredById[0]?.type || defaultType;
-  const productsFilteredByType = filterByType(products, watch("type"));
+  const productsFilteredByType = filterByType(downsizedProducts, watch("type"));
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

@@ -9,13 +9,14 @@ import DCResults from "./components/DCResults/DCResults";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import PricingCalculator from "./components/PricingCalculator/PricingCalculator";
+import PCResults from "./components/PCResults/PCResults";
 
 function App() {
   const product = useSelector((state) => state.product.productData);
   const [calc, setCalc] = useState(null);
 
   useEffect(() => {
-    console.log(product)
+    // console.log(product)
   })
   return (
     <div className="App">
@@ -69,6 +70,7 @@ function App() {
           {calc === "pricing" && (
             <>
               <PricingCalculator />
+              {product.length === 1 && product[0].factor ? <PCResults/> : null}
             </>
           )}
         </Container>

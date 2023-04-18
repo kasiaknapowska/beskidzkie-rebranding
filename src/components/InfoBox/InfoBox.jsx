@@ -14,10 +14,11 @@ const InfoBox = ({title, text}) => {
         backgroundColor: "secondary.dark",
         display: "flex",
         justifyContent: "space-between",
+        gap: "14px"
       }}
     >
       <Typography sx={{textTransform: "uppercase"}}>{title} </Typography>
-      <Typography>{text}</Typography>
+      <Typography align="right">{text}</Typography>
     </Box>
   );
 };
