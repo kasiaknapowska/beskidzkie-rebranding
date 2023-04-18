@@ -1,15 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Divider, Stack, Typography } from "@mui/material";
 import TrendingFlatOutlinedIcon from "@mui/icons-material/TrendingFlatOutlined";
-
+import usePricingCalculator from "../../hooks/usePricingCalculator";
 import PCProductDetails from "../PCProductDetails/PCProductDetails";
 import CustomNumber from "../CustomNumber/CustomNumber";
-import usePricingCalculator from "../../hooks/usePricingCalculator";
+
 
 const PCResults = () => {
   const [prices] = usePricingCalculator();
-
-  useEffect(() => console.log(prices), [prices]);
 
   return (
     <Stack spacing={4} sx={{ width: "100%" }}>

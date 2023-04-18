@@ -1,13 +1,15 @@
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { ThemeProvider } from "@mui/material/styles";
 import { Button, Container } from "@mui/material";
 
+import logo from "./images/BeskidzkieLogo.png";
 import "./App.css";
 import { theme } from "./theme/theme";
-import logo from "./images/BeskidzkieLogo.png";
+
 import DownsizingCalculator from "./components/DownsizingCalculator/DownsizingCalculator";
 import DCResults from "./components/DCResults/DCResults";
-import { useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+
 import PricingCalculator from "./components/PricingCalculator/PricingCalculator";
 import PCResults from "./components/PCResults/PCResults";
 
@@ -15,9 +17,7 @@ function App() {
   const product = useSelector((state) => state.product.productData);
   const [calc, setCalc] = useState(null);
 
-  useEffect(() => {
-    // console.log(product)
-  })
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -31,8 +31,8 @@ function App() {
             gap: "30px",
           }}
         >
-          <img src={logo} className="logo" alt="logo" />
-          {/* <Typography variant="h1">Wybierz kalkulator</Typography> */}
+          <img src={logo} className="logo" alt="logo" style={{marginTop: "32px"}}/>
+
           <Container
             style={{
               display: "flex",

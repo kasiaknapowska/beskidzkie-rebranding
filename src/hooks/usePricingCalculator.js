@@ -9,7 +9,6 @@ const usePricingCalculator = () => {
   const { compared, factor, masa } = product[0];
 
   useEffect(() => {
-    console.log(product);
 
     const competitivePricePer100g = getPricePer100g(competitivePrice, masa);
     const ourProductPricePer100g = multiply(competitivePricePer100g, factor);
