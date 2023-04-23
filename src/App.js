@@ -15,8 +15,7 @@ import PCResults from "./components/PCResults/PCResults";
 
 function App() {
   const product = useSelector((state) => state.product.productData);
-  const [calc, setCalc] = useState("pricing");
-
+  const [calc, setCalc] = useState(null);
 
   return (
     <div className="App">
@@ -31,7 +30,12 @@ function App() {
             gap: "30px",
           }}
         >
-          <img src={logo} className="logo" alt="logo" style={{marginTop: "32px"}}/>
+          <img
+            src={logo}
+            className="logo"
+            alt="logo"
+            style={{ marginTop: "32px" }}
+          />
 
           <Container
             style={{
@@ -41,10 +45,9 @@ function App() {
               justifyContent: "center",
               padding: "0",
               margin: "0 0 30px 0",
-             
             }}
           >
-             <Button
+            <Button
               variant={calc === "pricing" ? "contained" : "outlined"}
               size="large"
               sx={{ flexBasis: "260px" }}
@@ -55,17 +58,17 @@ function App() {
             <Button
               variant={calc === "downsizing" ? "contained" : "outlined"}
               size="large"
-              sx={{ flexBasis: "260px"}}
+              sx={{ flexBasis: "260px" }}
               onClick={() => setCalc("downsizing")}
             >
               Downsizing Kalkulator
             </Button>
-           
+            
           </Container>
-           {calc === "pricing" && (
+          {calc === "pricing" && (
             <>
               <PricingCalculator />
-              {product.length === 1 && product[0].factor ? <PCResults/> : null}
+              {product.length === 1 && product[0].factor ? <PCResults /> : null}
             </>
           )}
           {calc === "downsizing" && (
@@ -74,7 +77,6 @@ function App() {
               {product.length === 1 && product[0].type ? <DCResults /> : null}
             </>
           )}
-         
         </Container>
       </ThemeProvider>
     </div>
