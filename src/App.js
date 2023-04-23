@@ -15,7 +15,7 @@ import PCResults from "./components/PCResults/PCResults";
 
 function App() {
   const product = useSelector((state) => state.product.productData);
-  const [calc, setCalc] = useState(null);
+  const [calc, setCalc] = useState("pricing");
 
 
   return (
@@ -44,6 +44,14 @@ function App() {
              
             }}
           >
+             <Button
+              variant={calc === "pricing" ? "contained" : "outlined"}
+              size="large"
+              sx={{ flexBasis: "260px" }}
+              onClick={() => setCalc("pricing")}
+            >
+              Pricing Kalkulator
+            </Button>
             <Button
               variant={calc === "downsizing" ? "contained" : "outlined"}
               size="large"
@@ -52,27 +60,21 @@ function App() {
             >
               Downsizing Kalkulator
             </Button>
-            <Button
-              variant={calc === "pricing" ? "contained" : "outlined"}
-              size="large"
-              sx={{ flexBasis: "260px" }}
-              onClick={() => setCalc("pricing")}
-            >
-              Pricing Kalkulator
-            </Button>
+           
           </Container>
+           {calc === "pricing" && (
+            <>
+              <PricingCalculator />
+              {product.length === 1 && product[0].factor ? <PCResults/> : null}
+            </>
+          )}
           {calc === "downsizing" && (
             <>
               <DownsizingCalculator />
               {product.length === 1 && product[0].type ? <DCResults /> : null}
             </>
           )}
-          {calc === "pricing" && (
-            <>
-              <PricingCalculator />
-              {product.length === 1 && product[0].factor ? <PCResults/> : null}
-            </>
-          )}
+         
         </Container>
       </ThemeProvider>
     </div>
